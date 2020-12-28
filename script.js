@@ -3,8 +3,8 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-// WHEN I click the button to generate a password
-// THEN I am presented with a series of prompts for password criteria
+  // WHEN I click the button to generate a password
+  // THEN I am presented with a series of prompts for password criteria
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
@@ -21,7 +21,6 @@ function writePassword() {
 // need a button or link to get a new password - mostly done already
 // need to show the password on the page
 
-
 // WHEN prompted for password criteria
 // THEN I select which criteria to include in the password
 // nothing to do here
@@ -32,6 +31,8 @@ function writePassword() {
 // We havew to check to make sure the password is between 8 and 128
 // otherwise we tell the user to fix their input
 
+var passwordLength = prompt ("Choose password length between 8 and 128 characters.");
+
 // WHEN prompted for character types to include in the password
 // THEN I choose lowercase, uppercase, numeric, and/or special characters
 // confirm if they want lowercase
@@ -39,9 +40,16 @@ function writePassword() {
 // confirm if they want numeric
 // comfirm if they want special characters
 
+var upperCase = confirm ("Include upper case?");
+var lowerCase = confirm ("Include lower case?");
+var numericCharacters = confirm ("Include numbers?");
+var specialCharacters = confirm ("Include special characters?");
+
 // WHEN I answer each prompt
 // THEN my input should be validated and at least one character type should be selected
 // we need to show an error if they gave no characters to choose from
+
+
 
 // WHEN all prompts are answered
 // THEN a password is generated that matches the selected criteria
