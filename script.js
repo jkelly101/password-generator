@@ -11,14 +11,11 @@ function writePassword() {
 
 function generatePassword() {
 
+  // User input
 var passwordLength = prompt ("Choose password length between 8 and 128 characters.");
 
-if (passwordLength < 8){
-  alert ("Invalid Password Length. Please try again.");
-  return;
-}
-
-if (passwordLength > 128){
+// Conditions to make sure User Input meets requested criteria
+if (passwordLength < 8 | passwordLength > 128){
   alert ("Invalid Password Length. Please try again.");
   return;
 }
@@ -28,16 +25,12 @@ if (isNaN(passwordLength)){
   return;
 }
 
+// User Choices
 var confirmUpper = confirm ("Include upper case?");
 var confirmLower = confirm ("Include lower case?");
 var confirmNumbers = confirm ("Include numbers?");
 var confirmSymbols = confirm ("Include special characters?");
 var characterOptions = [""];
-
-if (confirmUpper === false && confirmLower === false && confirmNumbers === false && confirmSymbols === false) {
-  alert ("Must select at least one type of character. Please try again.");
-  return;
-}
 
 if (confirmUpper) {
   characterOptions.push ('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');
@@ -55,23 +48,22 @@ if (confirmSymbols) {
   characterOptions.push ('!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '{', '}', '[', ']', '=', '<', '>', '/', ',', '.', '|', '~', '?');
 }
 
+if (confirmUpper === false && confirmLower === false && confirmNumbers === false && confirmSymbols === false) {
+  alert ("Must select at least one type of character. Please try again.");
+  return;
+}
+
 // console.log (characterOptions);
 
+// Password Generated
 var randomPassword = "";
 
 for (i=0; i <= parseInt(passwordLength); i++){
-  randomPassword += characterOptions[Math.floor(Math.random() * characterOptions.length)];
-           
+  randomPassword += characterOptions[Math.floor(Math.random() * characterOptions.length)];         
 }
 
+// Password displayed
 return randomPassword;
-
-
-// WHEN all prompts are answered
-// THEN a password is generated that matches the selected criteria
-// from all the characters chosen, choose one randomly and add it to our password X number of numbers
 }
 
-// *************function ends here**********
-// Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
