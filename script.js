@@ -37,12 +37,17 @@ function generatePassword() {
 var passwordLength = prompt ("Choose password length between 8 and 128 characters.");
 
 if (passwordLength < 8){
-  alert ("Invalid Password Length");
+  alert ("Invalid Password Length. Please try again.");
   return;
 }
 
 if (passwordLength > 128){
-  alert ("Invalid Password Length");
+  alert ("Invalid Password Length. Please try again.");
+  return;
+}
+
+if (isNaN(passwordLength)){
+  alert ("Must enter a number. Please try again.");
   return;
 }
 // WHEN prompted for character types to include in the password
@@ -57,6 +62,11 @@ var confirmLower = confirm ("Include lower case?");
 var confirmNumbers = confirm ("Include numbers?");
 var confirmSymbols = confirm ("Include special characters?");
 var characterOptions = [""];
+
+if (confirmUpper === false && confirmLower === false && confirmNumbers === false && confirmSymbols === false) {
+  alert ("Must select at least one type of character. Please try again.");
+  return;
+}
 
 // WHEN I answer each prompt
 // THEN my input should be validated and at least one character type should be selected
