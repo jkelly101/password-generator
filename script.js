@@ -8,6 +8,7 @@ function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
+
 // WHEN the password is generated
 // THEN the password is either displayed in an alert or written to the page
 // 
@@ -35,6 +36,15 @@ function generatePassword() {
 
 var passwordLength = prompt ("Choose password length between 8 and 128 characters.");
 
+if (passwordLength < 8){
+  alert ("Invalid Password Length");
+  return;
+}
+
+if (passwordLength > 128){
+  alert ("Invalid Password Length");
+  return;
+}
 // WHEN prompted for character types to include in the password
 // THEN I choose lowercase, uppercase, numeric, and/or special characters
 // confirm if they want lowercase
@@ -70,9 +80,14 @@ if (confirmSymbols) {
 
 // console.log (characterOptions);
 
-// retVal = "";
+var randomPassword = "";
 
-// for (i=0; i <= passwordLength; i++)
+for (i=0; i <= parseInt(passwordLength); i++){
+  var randomPassword = characterOptions[Math.floor(Math.random() * characterOptions.length)];
+           
+}
+
+return randomPassword;
 
 
 // WHEN all prompts are answered
